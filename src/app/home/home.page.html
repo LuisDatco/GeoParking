@@ -1,0 +1,70 @@
+<ion-header id="header" [translucent]="true" style="display: none;">
+  <ion-toolbar color="primary">
+    <ion-title>
+      <div class="icono"></div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content force-overscroll="false">
+  <!-- <video id="video" autoplay loop src="../../assets/video/homeProvidencia.mp4"></video> -->
+  <div id="video"></div>
+  <div id="fixed">
+    <ion-icon name="car" class="car icon-glow" id="auto"></ion-icon>
+      <canvas id="myCanvas" width="800" height="600">
+      </canvas>
+    </div> 
+    <ion-list style="background-color:rgba(0, 0, 0, 0.8);display:none">
+      <ion-select class="selector" interface="popover" placeholder="- SELECCIONE -" (ionChange)="SetRuta($event)">
+        <ion-select-option *ngFor="let item of items" value="{{item.coordenadas}}">{{item.nombre}}</ion-select-option>
+      </ion-select>
+   </ion-list>
+  <div id="content" class="page-centered-element">
+    <div class="content">
+      <h1 class="title">
+        <div class="icono-center"></div>
+      </h1>
+      <h4 class="title">Bienvenido a GeoParking DATCO</h4>
+      <h4 class="title">Tu estacionamiento asignado es</h4>
+      <p id="spinner">{{est}}</p>
+      <h4 class="title">Te ayudamos a llegar a tu estacionamiento</h4>
+      <div class="buttons-container">
+        <ion-button (click)="SetRuta()" expand="large" fill="outline">
+          Generar Ruta
+          <ion-icon class="arrowSelect" name="car"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer id="footer" style="display:none">
+<ion-toolbar >
+   <!--  <ion-segment  style="background-color: #1c8dce">
+    <ion-segment-button value="favorites" style="background-color: #1c8dce;color:#ffffff">
+     <h4 class="arrowSelect">Sigue tu Ruta</h4>
+    </ion-segment-button>
+  </ion-segment>-->
+  <ion-segment  style="background-color: #1c8dce">
+    <ion-button expand="large" fill="outline" style="color:#fff" (click)="redirect()">
+      <button ion-button style="background-color: #1c8dce">
+      <ion-icon name="home" style="font-size: 15px;color:#fff"></ion-icon>
+    </button>
+    </ion-button>
+    <ion-button expand="large" fill="outline" style="color:#fff">
+      <a href="https://twitter.com/grupodatco" target="_blank" rel="noopener noreferrer" title="Twitter">
+      <button ion-button style="background-color: #1c8dce">
+        <ion-icon name="logo-twitter" style="color:#fff">
+        </ion-icon>
+      </button>
+    </a>
+    </ion-button>
+    <ion-button expand="large" fill="outline" style="color:#fff">
+      <a href="https://www.youtube.com/grupodatco" target="_blank" rel="noopener noreferrer" title="Youtube">
+      <button ion-button style="background-color: #1c8dce">
+        <ion-icon name="logo-youtube" style="color:#fff">
+        </ion-icon>
+      </button>
+    </a>
+    </ion-button>
+</ion-segment>
+</ion-toolbar>
+</ion-footer>
