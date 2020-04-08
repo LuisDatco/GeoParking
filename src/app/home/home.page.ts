@@ -18,10 +18,8 @@ export class HomePage {
   items:Des[] = []
   est:any = 0;
 
-  constructor(private storageService:StorageService,private plt: Platform) {
-    this.plt.ready().then(() => {
-      this.loadItems();
-    });
+  constructor(private storageService:StorageService) {
+   
   }
 
   loadItems() {

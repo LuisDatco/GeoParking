@@ -13,6 +13,7 @@ export interface Des {
 @Injectable({
   providedIn: 'root'
 })
+
 export class StorageService {
 
 constructor(private storage: Storage) { }
