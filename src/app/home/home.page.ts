@@ -27,10 +27,14 @@ export class HomePage {
   loadItems() {
     this.storageService.addItem().then(items =>{
       this.items = items;
-      let itemCoordenada = this.items.filter(coor => coor.id == token);
-      this.est = itemCoordenada[0].nombre;
+    }).then((r) => {
+      this.storageService.loadItem().then(items =>{
+        this.items = items;
+        let itemCoordenada = this.items.filter(coor => coor.id == token);
+        this.est = itemCoordenada[0].nombre;
     })
-  }
+  })
+}
 
   getItem() {
     this.storageService.loadItem();
@@ -219,7 +223,6 @@ export class HomePage {
        function doSetTimeoutXPositivo(x,y) {
         setTimeout(function () {
           ctxa.lineTo(x, y);
-          //ctxa.setLineDash([2, 2]);
           ctxa.stroke();
         }, 2000);
       }
@@ -228,7 +231,6 @@ export class HomePage {
       function doSetTimeoutXNegativo(x,y) {
         setTimeout(function () {
           ctxa.lineTo(x, y);
-          //ctxa.setLineDash([2, 2]);
           ctxa.stroke();
         }, 2000);
       }
@@ -236,7 +238,6 @@ export class HomePage {
       function doSetTimeoutYPositivo(x,y) {
         setTimeout(function() { 
           ctxa.lineTo(x, y);
-          //ctxa.setLineDash([2, 2]);
           ctxa.stroke();
          }, 2000);
       }
@@ -244,7 +245,6 @@ export class HomePage {
       function doSetTimeoutYNegativo(x,y) {
         setTimeout(function() { 
           ctxa.lineTo(x, y);
-          //ctxa.setLineDash([2, 2]);
           ctxa.stroke();
          }, 2000);
       }
