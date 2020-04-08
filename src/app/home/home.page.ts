@@ -3,9 +3,7 @@ import { StorageService ,Des} from '../services/storage.service';
 import { Platform } from '@ionic/angular';
 export const coordenadasCarX = 469;
 export const coordenadasCarY = 50;
-export const token = 6;
-var canvas: any;
-var canvasa: any;
+export var token = 0;
 var iluminacion = 1;
 
 @Component({
@@ -30,6 +28,9 @@ export class HomePage {
     }).then((r) => {
       this.storageService.loadItem().then(items =>{
         this.items = items;
+        var url = window.location.search;
+        let tk = parseInt(url.substring(url.lastIndexOf('=') + 1));
+        token = tk;
         let itemCoordenada = this.items.filter(coor => coor.id == token);
         this.est = itemCoordenada[0].nombre;
     })
@@ -93,7 +94,7 @@ export class HomePage {
 
     let arrCoordenadas = coordenadas.split(',');
 
-     canvas = document.getElementById("myCanvas")
+     let canvas:any = document.getElementById("myCanvas")
      var ctx = canvas.getContext("2d");
      ctx.clearRect(0, 0, 800, 500);
      ctx.beginPath();
@@ -171,7 +172,7 @@ export class HomePage {
   
       let arrCoordenadas = coordenadas.split(',');
   
-       canvasa = document.getElementById("myCanvas")
+       let canvasa:any = document.getElementById("myCanvas")
        var ctxa = canvasa.getContext("2d");
        ctxa.beginPath();
        ctxa.moveTo(coordenadasCarX, coordenadasCarY);  
