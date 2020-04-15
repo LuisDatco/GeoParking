@@ -30,6 +30,8 @@ export class HomePage {
         this.items = items;
         var url = window.location.search;
         //let tk = 57;
+
+
         let tk = parseInt(url.substring(url.lastIndexOf('=') + 1));
         token = tk;
         let itemCoordenada = this.items.filter(coor => coor.id == token);
