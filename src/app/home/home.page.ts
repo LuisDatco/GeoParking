@@ -29,6 +29,7 @@ export class HomePage {
       this.storageService.loadItem().then(items =>{
         this.items = items;
         var url = window.location.search;
+        //let tk = 57;
         let tk = parseInt(url.substring(url.lastIndexOf('=') + 1));
         token = tk;
         let itemCoordenada = this.items.filter(coor => coor.id == token);
@@ -41,11 +42,11 @@ export class HomePage {
     this.storageService.loadItem();
   }  
 
-  /*getCoordinates(event){
-      let Y =(event.offsetY + 15);
-      let X = (event.offsetX + 5);   
-      console.log(Y);
-      console.log(X);
+ /* getCoordinates(event){
+      let Y =(event.y -20);
+      let X = (event.offsetX);   
+      console.log('y:' + Y);
+      console.log('x' + X);
     }*/
 
     redirect(){
@@ -195,24 +196,24 @@ export class HomePage {
           if(jsonCoordenadas.hasOwnProperty("x")){
             if(coordenadaX > jsonCoordenadas.x){
               for (var i = coordenadaX; i >= jsonCoordenadas.x; i--){
-                doSetTimeoutXNegativo(i,coordenadaY)
+                doSetTimeoutXNegativoa(i,coordenadaY)
               }
               coordenadaX = jsonCoordenadas.x;
             }else{
               for (var i = coordenadaX; i <= jsonCoordenadas.x; i++){
-                doSetTimeoutXPositivo(i,coordenadaY);
+                doSetTimeoutXPositivoa(i,coordenadaY);
               }
               coordenadaX = jsonCoordenadas.x;
             }
           }else{
             if(coordenadaY > jsonCoordenadas.y){
               for (var i = coordenadaY; i >= jsonCoordenadas.y; i--){
-                doSetTimeoutYNegativo(coordenadaX,i)
+                doSetTimeoutYNegativoa(coordenadaX,i)
               }
               coordenadaY = jsonCoordenadas.y;
             }else{
               for (var i = coordenadaY; i <= jsonCoordenadas.y; i++){
-                doSetTimeoutYPositivo(coordenadaX,i);
+                doSetTimeoutYPositivoa(coordenadaX,i);
               }
               coordenadaY = jsonCoordenadas.y;
             }
@@ -221,7 +222,7 @@ export class HomePage {
   
        ctxa.closePath();
   
-       function doSetTimeoutXPositivo(x,y) {
+       function doSetTimeoutXPositivoa(x,y) {
         setTimeout(function () {
           ctxa.lineTo(x, y);
           ctxa.stroke();
@@ -229,21 +230,21 @@ export class HomePage {
       }
       
   
-      function doSetTimeoutXNegativo(x,y) {
+      function doSetTimeoutXNegativoa(x,y) {
         setTimeout(function () {
           ctxa.lineTo(x, y);
           ctxa.stroke();
         }, 2000);
       }
   
-      function doSetTimeoutYPositivo(x,y) {
+      function doSetTimeoutYPositivoa(x,y) {
         setTimeout(function() { 
           ctxa.lineTo(x, y);
           ctxa.stroke();
          }, 2000);
       }
   
-      function doSetTimeoutYNegativo(x,y) {
+      function doSetTimeoutYNegativoa(x,y) {
         setTimeout(function() { 
           ctxa.lineTo(x, y);
           ctxa.stroke();
