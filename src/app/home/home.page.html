@@ -44,6 +44,12 @@
     </ion-segment-button>
   </ion-segment>-->
   <ion-segment>
+    <ion-button (click)="playText()" expand="large" fill="outline" style="color:#fff">
+      <button ion-button style="background-color:transparent">
+        <ion-icon name="megaphone" style="color:#fff">
+        </ion-icon>
+      </button>
+    </ion-button>
     <ion-button expand="large" fill="outline" style="color:#fff" (click)="redirect()">
       <button ion-button style="background-color:transparent">
       <ion-icon name="home" style="font-size: 15px;color:#fff"></ion-icon>
@@ -67,4 +73,6 @@
     </ion-button>
 </ion-segment>
 </ion-toolbar>
+
+
 </ion-footer>

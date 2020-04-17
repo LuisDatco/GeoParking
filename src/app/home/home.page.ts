@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { StorageService ,Des} from '../services/storage.service';
 import { Platform } from '@ionic/angular';
+// text-to-speech
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
+
+// Variables
 export const coordenadasCarX = 469;
 export const coordenadasCarY = 50;
 export var token = 0;
@@ -15,11 +19,27 @@ export class HomePage {
 
   items:Des[] = []
   est:any = 0;
+  text: string;
+  rate: number;
+  locale: string;
 
-  constructor(private storageService:StorageService,private plt: Platform) {
+  constructor(private storageService:StorageService,private plt: Platform,public tts:TextToSpeech) {
     this.plt.ready().then(() => {
       this.loadItems();
+      this.text = 'sigue derecho hasta el primer cruce, luego gira a la izquierda y dirígete hasta el fondo del camino. El destino estará a tu izquierda, párking 57';
+      this.rate = 1;
+      this.locale = 'es-CH';
     });
+  }
+
+  playText() {
+    this.tts.speak({
+      text: this.text,
+      //rate: this.rate / 20,
+      locale: this.locale
+    })
+      .then(() => console.log('Success'))
+      .catch((reason: any) => console.log(reason));
   }
 
   loadItems() {
@@ -29,10 +49,8 @@ export class HomePage {
       this.storageService.loadItem().then(items =>{
         this.items = items;
         var url = window.location.search;
-        //let tk = 57;
-
-
-        let tk = parseInt(url.substring(url.lastIndexOf('=') + 1));
+        let tk = 57;
+        //let tk = parseInt(url.substring(url.lastIndexOf('=') + 1));
         token = tk;
         let itemCoordenada = this.items.filter(coor => coor.id == token);
         this.est = itemCoordenada[0].nombre;
@@ -58,6 +76,8 @@ export class HomePage {
 
   SetRuta()
   {
+
+    this.playText();
 
   let itemCoordenada = this.items.filter(coor => coor.id == token);
   draw(itemCoordenada)

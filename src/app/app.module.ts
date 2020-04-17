@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {IonicStorageModule} from '@ionic/storage'
 
+// text-to-speech
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import {IonicStorageModule} from '@ionic/storage'
   providers: [
     StatusBar,
     SplashScreen,
+    TextToSpeech,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
